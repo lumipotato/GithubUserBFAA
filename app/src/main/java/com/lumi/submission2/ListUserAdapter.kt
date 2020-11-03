@@ -9,6 +9,12 @@ import kotlinx.android.synthetic.main.item_row_user.view.*
 
 class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>(){
 
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     private val mData = ArrayList<User>()
     fun setData(items: ArrayList<User>) {
         mData.clear()
@@ -35,7 +41,13 @@ class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>(){
                     .load(user.avatar)
                     .into(img_avatar)
                 txt_username.text = user.username
+
+                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(user) }
             }
         }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: User)
     }
 }

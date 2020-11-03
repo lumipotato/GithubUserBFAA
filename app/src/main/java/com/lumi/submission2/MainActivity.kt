@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,12 @@ class MainActivity : AppCompatActivity() {
         rv_users.layoutManager = LinearLayoutManager(this)
         rv_users.adapter = adapter
 
+        adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: User) {
+                showSelectedUser(data)
+            }
+        })
+
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
 
         mainViewModel.getUsers().observe(this, { user ->
@@ -36,6 +43,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+    }
+
+    private fun showSelectedUser(user: User) {
+        Toast.makeText(this, "Kamu memilih ${user.username}", Toast.LENGTH_SHORT).show()
     }
 
     private fun showLoading(state: Boolean) {
