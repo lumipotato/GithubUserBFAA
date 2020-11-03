@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         if (state) {
             progressBar.visibility = View.VISIBLE
         } else {
-            progressBar.visibility = View.GONE
+            progressBar.visibility = View.INVISIBLE
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 mainViewModel.setUser(newText)
-                showLoading(true)
                 return false
             }
         })
