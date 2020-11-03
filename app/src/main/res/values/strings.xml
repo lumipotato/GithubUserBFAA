@@ -22,4 +22,7 @@
     <string name="search">search</string>
     <string name="insert_user">insert</string>
     <string name="user">user</string>
+    <string name="menu_2">menu2</string>
+    <string name="menu_1">menu1</string>
+    <string name="search_hint">input something</string>
 </resources>

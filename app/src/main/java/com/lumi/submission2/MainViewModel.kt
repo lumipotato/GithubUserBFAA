@@ -12,11 +12,11 @@ import org.json.JSONArray
 class MainViewModel:ViewModel() {
     private val listUsers = MutableLiveData<ArrayList<User>>()
 
-    fun setUser() {
+    fun setUser(username:String) {
         val listUser = ArrayList<User>()
 
         val apiKey = "17cb852da4c0e80bcf2a9f424281b8354f5468b9"
-        val url = "https://api.github.com/users"
+        val url = "https://api.github.com/search/users?q=$username"
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")
         client.addHeader("User-Agent", "request")

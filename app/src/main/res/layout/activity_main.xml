@@ -15,35 +15,15 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:visibility="gone"/>
-    <LinearLayout
-        android:id="@+id/inputText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="1">
-        <EditText
-            android:id="@+id/editUser"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:hint="@string/insert_user"
-            android:text=""
-            android:autofillHints="@string/Name"
-            android:inputType="text" />
-        <Button
-            android:id="@+id/btnSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:text="@string/search" />
-    </LinearLayout>
 
+    <FrameLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/fragment_container" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_users"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/inputText"
         android:layout_marginTop="1dp"
         tools:listitem="@layout/item_row_user" />
 </RelativeLayout>
