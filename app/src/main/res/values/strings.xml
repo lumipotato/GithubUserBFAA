@@ -25,4 +25,8 @@
     <string name="menu_2">Settings</string>
     <string name="menu_1">menu1</string>
     <string name="search_hint">input something</string>
+    <string name="content_tab_follower">fllwr</string>
+    <string name="content_tab_following">fllwg</string>
+    <string name="tab_text_1">tab1</string>
+    <string name="tab_text_2">tab2</string>
 </resources>
