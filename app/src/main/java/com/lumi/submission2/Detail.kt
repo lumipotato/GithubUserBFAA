@@ -23,6 +23,7 @@ class Detail : AppCompatActivity() {
             .into(imgPhoto)
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        sectionsPagerAdapter.username = user.username
         view_pager.adapter = sectionsPagerAdapter
         tabs.setupWithViewPager(view_pager)
 
