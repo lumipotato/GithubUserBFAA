@@ -7,16 +7,16 @@ import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
-import org.json.JSONObject
+import org.json.JSONArray
 
 class MainViewModel:ViewModel() {
     private val listUsers = MutableLiveData<ArrayList<User>>()
 
-    fun setUser(username:String) {
+    fun setUser() {
         val listUser = ArrayList<User>()
 
         val apiKey = "17cb852da4c0e80bcf2a9f424281b8354f5468b9"
-        val url = "https://api.github.com/search/users?q=$username"
+        val url = "https://api.github.com/users"
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")
         client.addHeader("User-Agent", "request")
@@ -28,8 +28,7 @@ class MainViewModel:ViewModel() {
                 Log.d("Exception", result)
 
                 try {
-                    val responseObject = JSONObject(result)
-                    val items = responseObject.getJSONArray("items")
+                    val items = JSONArray(result)
 
                     for (i in 0 until items.length()){
                         val item = items.getJSONObject(i)
