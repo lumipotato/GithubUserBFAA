@@ -11,7 +11,7 @@ class DetailViewModel:ViewModel() {
 
     fun setDetail(username: String) {
 
-        val apiKey = "17cb852da4c0e80bcf2a9f424281b8354f5468b9"
+        val apiKey = ""
         val url = "https://api.github.com/users/$username"
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")
