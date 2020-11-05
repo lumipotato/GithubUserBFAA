@@ -8,6 +8,7 @@ import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
+import org.json.JSONObject
 
 class MainViewModel:ViewModel() {
     private val listUsers = MutableLiveData<ArrayList<User>>()
@@ -28,7 +29,8 @@ class MainViewModel:ViewModel() {
                 Log.d("Exception", result)
 
                 try {
-                    val items = JSONArray(result)
+                    val responseObject = JSONObject(result)
+                    val items = responseObject.getJSONArray("items")
 
                     for (i in 0 until items.length()){
                         val item = items.getJSONObject(i)
