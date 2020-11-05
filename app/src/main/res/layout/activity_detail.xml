@@ -10,12 +10,13 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_avatar"
-        android:layout_width="147dp"
-        android:layout_height="134dp"
+        android:layout_width="149dp"
+        android:layout_height="141dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -23,28 +24,87 @@
 
     <TextView
         android:id="@+id/txt_username"
-        android:layout_width="147dp"
-        android:layout_height="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:clickable="false"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/img_avatar"
-        app:layout_constraintStart_toStartOf="@+id/img_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/img_avatar"
+        app:layout_constraintStart_toEndOf="@+id/img_avatar"
+        app:layout_constraintTop_toTopOf="@+id/img_avatar"
         tools:text="@string/Uname" />
+
+    <TextView
+    android:id="@+id/txt_name"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
+    android:clickable="false"
+    android:textAlignment="center"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@+id/img_avatar"
+    app:layout_constraintTop_toBottomOf="@+id/txt_username"
+    tools:text="@string/Name" />
+
+    <TextView
+        android:id="@+id/txt_company"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:clickable="false"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/img_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name"
+        tools:text="@string/company" />
+
+    <TextView
+        android:id="@+id/txt_location"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:clickable="false"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/img_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_company"
+        tools:text="@string/location" />
+
+    <TextView
+        android:id="@+id/txt_follower"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:clickable="false"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/img_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_location"
+        tools:text="@string/followers" />
+
+    <TextView
+        android:id="@+id/txt_following"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:clickable="false"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/txt_follower"
+        app:layout_constraintTop_toTopOf="@+id/txt_follower"
+        tools:text="@string/following" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_username"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/txt_follower"
+        app:layout_constraintVertical_bias="0.01999998"
         app:tabTextColor="@android:color/white" />
 
     <androidx.viewpager.widget.ViewPager

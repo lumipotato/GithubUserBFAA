@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 data class User(
     var id: Int = 0,
     var avatar: String? = null,
-    var username: String? = null,
+    var username: String? = null
 ) : Parcelable
 
 
