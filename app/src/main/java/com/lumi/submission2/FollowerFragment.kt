@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
-import kotlinx.android.synthetic.main.activity_main.rv_users
+import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 
 class FollowerFragment : Fragment() {
@@ -25,9 +26,8 @@ class FollowerFragment : Fragment() {
         }
     }
 
-    private fun setUser() {
+    private fun setUser(username: String) {
         val listUser = ArrayList<User>()
-        val username = String()
 
         val apiKey = "17cb852da4c0e80bcf2a9f424281b8354f5468b9"
         val url = "https://api.github.com/users/$username/followers"
@@ -60,6 +60,13 @@ class FollowerFragment : Fragment() {
             }
             override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray, error: Throwable) {
                 Log.d("onFailure", error.message.toString())
+                val errorMessage = when (statusCode) {
+                    401 -> "$statusCode : Bad Request"
+                    403 -> "$statusCode : Forbidden"
+                    404 -> "$statusCode : Not Found"
+                    else -> "$statusCode : ${error.message}"
+                }
+                Toast.makeText(activity, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -90,6 +97,7 @@ class FollowerFragment : Fragment() {
         adapter.notifyDataSetChanged()
         rv_users.layoutManager = LinearLayoutManager(activity)
         rv_users.adapter = adapter
-        setUser()
+        username?.let { setUser(it) }
     }
+
 }

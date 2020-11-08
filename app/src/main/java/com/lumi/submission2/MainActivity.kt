@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             progressBar.visibility = View.INVISIBLE
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.options_menu, menu)
