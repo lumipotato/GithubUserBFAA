@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pengguna Github</string>
+    <string name="Uname">Nama User</string>
+    <string name="Name">Nama</string>
+    <string name="profile">Profil</string>
+    <string name="company">Perusahaan</string>
+    <string name="following">Mengikuti</string>
+    <string name="followers">Pengikut</string>
+    <string name="location">Lokasi</string>
+    <string name="todo">TODO</string>
+    <string name="image_splash">Image_Splash</string>
+    <string name="search">Cari</string>
+    <string name="insert_user">insert</string>
+    <string name="user">user</string>
+    <string name="menu_2">Pengaturan</string>
+    <string name="search_hint">Ketik Sesuatu</string>
+    <string name="tab_text_1">Pengikut</string>
+    <string name="tab_text_2">Mengikuti</string>
+</resources>
