@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
                 showLoading(false)
             }
         })
-
     }
 
     private fun showLoading(state: Boolean) {
