@@ -1,10 +1,12 @@
-package com.lumi.submission2
+package com.lumi.submission2.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.lumi.submission2.R
+import com.lumi.submission2.model.User
 import kotlinx.android.synthetic.main.item_row_user.view.*
 
 class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>(){

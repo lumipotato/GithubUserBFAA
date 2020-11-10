@@ -1,4 +1,4 @@
-package com.lumi.submission2
+package com.lumi.submission2.adapter
 
 import android.content.Context
 import androidx.annotation.Nullable
@@ -6,6 +6,9 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.lumi.submission2.R
+import com.lumi.submission2.ui.FollowerFragment
+import com.lumi.submission2.ui.FollowingFragment
 
 class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     var username: String? = null

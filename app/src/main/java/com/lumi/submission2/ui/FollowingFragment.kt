@@ -1,4 +1,4 @@
-package com.lumi.submission2
+package com.lumi.submission2.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.lumi.submission2.viewmodel.FollowingViewModel
+import com.lumi.submission2.adapter.ListUserAdapter
+import com.lumi.submission2.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class FollowingFragment : Fragment() {
 
     private var username: String? = null
-    private lateinit var adapter: FollowAdapter
+    private lateinit var adapter: ListUserAdapter
     private lateinit var followingViewModel: FollowingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,11 +47,12 @@ class FollowingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         rv_users.setHasFixedSize(true)
-        adapter = FollowAdapter()
+        adapter = ListUserAdapter()
         adapter.notifyDataSetChanged()
         rv_users.layoutManager = LinearLayoutManager(activity)
         rv_users.adapter = adapter
-        followingViewModel = ViewModelProvider(activity!!, ViewModelProvider.NewInstanceFactory()).get(FollowingViewModel::class.java)
+        followingViewModel = ViewModelProvider(activity!!, ViewModelProvider.NewInstanceFactory()).get(
+            FollowingViewModel::class.java)
         username?.let { followingViewModel.setFollowing(it) }
         activity?.let {
             followingViewModel.getFollowings().observe(it, { user ->

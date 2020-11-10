@@ -1,4 +1,4 @@
-package com.lumi.submission2
+package com.lumi.submission2.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.lumi.submission2.model.User
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 

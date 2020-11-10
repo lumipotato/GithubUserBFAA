@@ -1,4 +1,4 @@
-package com.lumi.submission2
+package com.lumi.submission2.ui
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,10 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.lumi.submission2.viewmodel.DetailViewModel
+import com.lumi.submission2.R
+import com.lumi.submission2.adapter.SectionsPagerAdapter
+import com.lumi.submission2.model.User
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_detail.progressBar
 
@@ -29,7 +33,8 @@ class Detail : AppCompatActivity() {
             .into(imgPhoto)
 
 
-        detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailViewModel::class.java)
+        detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            DetailViewModel::class.java)
         user.username?.let { detailViewModel.setDetail(it) }
         showLoading(true)
 

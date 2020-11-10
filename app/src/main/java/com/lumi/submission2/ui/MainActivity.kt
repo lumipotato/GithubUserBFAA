@@ -1,4 +1,4 @@
-package com.lumi.submission2
+package com.lumi.submission2.ui
 
 import android.app.SearchManager
 import android.content.Context
@@ -12,6 +12,10 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.lumi.submission2.adapter.ListUserAdapter
+import com.lumi.submission2.viewmodel.MainViewModel
+import com.lumi.submission2.R
+import com.lumi.submission2.model.User
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         rv_users.layoutManager = LinearLayoutManager(this)
         rv_users.adapter = adapter
 
-        adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback{
+        adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: User) {
                 val moveIntent = Intent(this@MainActivity, Detail::class.java)
                 moveIntent.putExtra(Detail.EXTRA_USER, data)
@@ -38,7 +42,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+            MainViewModel::class.java)
 
         mainViewModel.getUsers().observe(this, { user ->
             if (user != null) {

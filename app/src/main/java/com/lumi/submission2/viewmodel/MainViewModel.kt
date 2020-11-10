@@ -1,4 +1,4 @@
-package com.lumi.submission2
+package com.lumi.submission2.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,17 +6,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.lumi.submission2.model.User
 import cz.msebera.android.httpclient.Header
-import org.json.JSONArray
+import org.json.JSONObject
 
-class FollowingViewModel:ViewModel() {
+class MainViewModel:ViewModel() {
     private val listUsers = MutableLiveData<ArrayList<User>>()
 
-    fun setFollowing(username: String) {
+    fun setUser(username:String) {
         val listUser = ArrayList<User>()
 
         val apiKey = "17cb852da4c0e80bcf2a9f424281b8354f5468b9"
-        val url = "https://api.github.com/users/$username/following"
+        val url = "https://api.github.com/search/users?q=$username"
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")
         client.addHeader("User-Agent", "request")
@@ -28,13 +29,14 @@ class FollowingViewModel:ViewModel() {
                 Log.d("Exception", result)
 
                 try {
-                    val jsonArray = JSONArray(result)
+                    val responseObject = JSONObject(result)
+                    val items = responseObject.getJSONArray("items")
 
-                    for (i in 0 until jsonArray.length()){
+                    for (i in 0 until items.length()){
+                        val item = items.getJSONObject(i)
                         val user = User()
-                        val jsonObject = jsonArray.getJSONObject(i)
-                        user.username = jsonObject.getString("login")
-                        user.avatar = jsonObject.getString("avatar_url")
+                        user.username = item.getString("login")
+                        user.avatar = item.getString("avatar_url")
                         listUser.add(user)
                     }
 
@@ -49,7 +51,8 @@ class FollowingViewModel:ViewModel() {
             }
         })
     }
-    fun getFollowings(): LiveData<ArrayList<User>> {
+
+    fun getUsers(): LiveData<ArrayList<User>> {
         return listUsers
     }
 }
