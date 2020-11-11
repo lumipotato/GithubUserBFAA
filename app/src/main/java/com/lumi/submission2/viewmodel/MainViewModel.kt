@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.lumi.submission2.BuildConfig
 import com.lumi.submission2.model.User
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
@@ -16,7 +17,7 @@ class MainViewModel:ViewModel() {
     fun setUser(username:String) {
         val listUser = ArrayList<User>()
 
-        val apiKey = "17cb852da4c0e80bcf2a9f424281b8354f5468b9"
+        val apiKey:String = BuildConfig.API_KEY
         val url = "https://api.github.com/search/users?q=$username"
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")
