@@ -16,6 +16,24 @@
         android:layout_centerVertical="true"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/text_not_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/not_found"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/text_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/greeting"
+        android:visibility="visible" />
+
     <FrameLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.lumi.submission2.ui
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -24,7 +25,7 @@ class Detail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val user = intent.getParcelableExtra(EXTRA_USER) as User
+        val user = intent.getParcelableExtra<Parcelable>(EXTRA_USER) as User
         val imgPhoto: ImageView = findViewById(R.id.img_avatar)
 
         txt_username.text = user.username

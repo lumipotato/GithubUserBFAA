@@ -49,7 +49,16 @@ class MainActivity : AppCompatActivity() {
             if (user != null) {
                 adapter.setData(user)
                 showLoading(false)
+                text_greeting.visibility = View.INVISIBLE
             }
+
+            if (user.isNotEmpty()){
+                text_not_found.visibility = View.GONE
+            }
+            else{
+                text_not_found.visibility = View.VISIBLE
+            }
+
         })
     }
 
@@ -74,6 +83,7 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String): Boolean {
                 mainViewModel.setUser(query)
                 showLoading(true)
+                text_greeting.visibility = View.INVISIBLE
                 return true
             }
 
@@ -92,4 +102,5 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

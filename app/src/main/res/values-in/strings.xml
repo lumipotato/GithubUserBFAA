@@ -16,4 +16,6 @@
     <string name="search_hint">Ketik Sesuatu</string>
     <string name="tab_text_1">Pengikut</string>
     <string name="tab_text_2">Mengikuti</string>
+    <string name="not_found">Silahkan coba ketik yang lain</string>
+    <string name="greeting">Selamat Datang di Github User</string>
 </resources>

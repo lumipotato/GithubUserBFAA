@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lumi.submission2.viewmodel.FollowingViewModel
 import com.lumi.submission2.adapter.ListUserAdapter
 import com.lumi.submission2.R
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.rv_users
 
 class FollowingFragment : Fragment() {
 

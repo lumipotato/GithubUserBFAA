@@ -15,4 +15,6 @@
     <string name="search_hint">input something</string>
     <string name="tab_text_1">Follower</string>
     <string name="tab_text_2">Following</string>
+    <string name="not_found">Please Try Another Input</string>
+    <string name="greeting">Welcome To Github User, Please do some search</string>
 </resources>
