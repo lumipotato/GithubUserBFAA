@@ -15,7 +15,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String","API_KEY",'"17cb852da4c0e80bcf2a9f424281b8354f5468b9"')
+
     }
 
     buildTypes {
@@ -46,7 +46,7 @@ dependencies {
     androidTestImplementation "androidx.room:room-testing:2.3.0-alpha03"
 
     annotationProcessor 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
