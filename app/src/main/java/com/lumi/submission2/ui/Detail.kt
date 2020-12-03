@@ -73,8 +73,8 @@ class Detail : AppCompatActivity(), View.OnClickListener {
         when (v.id) {
             R.id.fab_add -> {
                 statusFavorite = !statusFavorite
-                setFavorite(statusFavorite)
                 setStatusFavorite(statusFavorite)
+                setFavorite(statusFavorite)
 
             }
         }

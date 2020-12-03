@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.lumi.submission2.BuildConfig
+import com.lumi.submission2.db.UserProvider.Companion.CONTENT_URI
 import com.lumi.submission2.model.UserDetail
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
@@ -61,7 +62,7 @@ class DetailViewModel:ViewModel() {
 
 
     fun setFavoriteUser(users_favorite: ContentValues) {
-        contentResolver.insert(uriWithId, users_favorite)
+        contentResolver.insert(CONTENT_URI, users_favorite)
     }
 
     fun deleteFavoriteUser(id: Int) {
@@ -69,7 +70,7 @@ class DetailViewModel:ViewModel() {
     }
 
     fun setFavoriteById(id: Int) {
-        val cursorFavorite = contentResolver.query(uriWithId,null, id.toString(),null,null)
+        val cursorFavorite = contentResolver.query(CONTENT_URI,null, id.toString(),null,null)
         favoriteUser.postValue(cursorFavorite)
     }
 
