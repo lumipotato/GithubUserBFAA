@@ -1,5 +1,9 @@
 package com.lumi.submission2.viewmodel
 
+import android.content.ContentResolver
+import android.content.ContentValues
+import android.database.Cursor
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,6 +17,9 @@ import org.json.JSONObject
 
 class DetailViewModel:ViewModel() {
     private val detailUsers = MutableLiveData<UserDetail>()
+    private val favoriteUser = MutableLiveData<Cursor>()
+    private lateinit var contentResolver: ContentResolver
+    private lateinit var uriWithId: Uri
 
     fun setDetail(username: String) {
 
@@ -55,4 +62,21 @@ class DetailViewModel:ViewModel() {
     fun getDetails(): LiveData<UserDetail> {
         return detailUsers
     }
+
+
+    fun setFavoriteUser(users_favorite: ContentValues) {
+        contentResolver.insert(uriWithId, users_favorite)
+    }
+
+    fun deleteFavoriteUser(id: Int) {
+        contentResolver.delete(uriWithId, id.toString(), null)
+    }
+
+    fun setFavoriteById(id: Int) {
+        val cursorFavorite = contentResolver.query(uriWithId,null, id.toString(),null,null)
+        favoriteUser.postValue(cursorFavorite)
+    }
+
+    fun getFavoriteById(): LiveData<Cursor> = favoriteUser
+
 }

@@ -134,6 +134,25 @@
             app:layout_constraintTop_toTopOf="@+id/textView3"
             tools:text="@string/following" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:contentDescription="@string/insert_user"
+            android:focusable="true"
+            android:foregroundGravity="bottom"
+            app:fabSize="normal"
+            app:layout_anchorGravity="bottom|end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/txt_follower"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/ic_outline_favorite_border_36" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.tabs.TabLayout
@@ -161,6 +180,7 @@
             android:id="@+id/view_pager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </FrameLayout>
 
 
