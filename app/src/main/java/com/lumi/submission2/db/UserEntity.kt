@@ -12,26 +12,26 @@ import kotlinx.android.parcel.Parcelize
 data class UserEntity (
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
-    val id: Int,
+    val id: Int? = null,
 
     @ColumnInfo(name = "avatar_url")
-    val avatar: String?,
+    var avatar: String? = null,
 
     @ColumnInfo(name = "login")
-    val username: String?,
+    var username: String? = null,
 
     @ColumnInfo(name = "name")
-    val name: String?,
+    val name: String? = null,
 
     @ColumnInfo(name = "company")
-    val company: String?,
+    val company: String? = null,
 
     @ColumnInfo(name = "location")
-    val location: String?,
+    val location: String? = null,
 
     @ColumnInfo(name = "followers")
-    val follower: Int,
+    val follower: Int? = null,
 
     @ColumnInfo(name = "following")
-    val following: Int
+    val following: Int? = null
         ):Parcelable

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lumi.submission2.R
-import com.lumi.submission2.model.User
+import com.lumi.submission2.db.UserEntity
 import kotlinx.android.synthetic.main.item_row_user.view.*
 
 class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>(){
@@ -17,8 +17,8 @@ class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>(){
         this.onItemClickCallback = onItemClickCallback
     }
 
-    private val mData = ArrayList<User>()
-    fun setData(items: ArrayList<User>) {
+    private val mData = ArrayList<UserEntity>()
+    fun setData(items: ArrayList<UserEntity>) {
         mData.clear()
         mData.addAll(items)
         notifyDataSetChanged()
@@ -37,7 +37,7 @@ class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>(){
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(user: User) {
+        fun bind(user: UserEntity) {
             with(itemView) {
                 Glide.with(this)
                     .load(user.avatar)
@@ -50,6 +50,6 @@ class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>(){
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: User)
+        fun onItemClicked(data: UserEntity)
     }
 }

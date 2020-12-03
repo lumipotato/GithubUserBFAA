@@ -16,10 +16,10 @@ import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 
 class DetailViewModel:ViewModel() {
-    private val detailUsers = MutableLiveData<UserDetail>()
-    private val favoriteUser = MutableLiveData<Cursor>()
     private lateinit var contentResolver: ContentResolver
     private lateinit var uriWithId: Uri
+    private val detailUsers = MutableLiveData<UserDetail>()
+    private val favoriteUser = MutableLiveData<Cursor>()
 
     fun setDetail(username: String) {
 
@@ -59,10 +59,6 @@ class DetailViewModel:ViewModel() {
         })
     }
 
-    fun getDetails(): LiveData<UserDetail> {
-        return detailUsers
-    }
-
 
     fun setFavoriteUser(users_favorite: ContentValues) {
         contentResolver.insert(uriWithId, users_favorite)
@@ -78,5 +74,9 @@ class DetailViewModel:ViewModel() {
     }
 
     fun getFavoriteById(): LiveData<Cursor> = favoriteUser
+
+    fun getDetails(): LiveData<UserDetail> {
+        return detailUsers
+    }
 
 }

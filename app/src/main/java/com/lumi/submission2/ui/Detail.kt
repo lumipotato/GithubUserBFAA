@@ -1,9 +1,7 @@
 package com.lumi.submission2.ui
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +11,6 @@ import com.lumi.submission2.R
 import com.lumi.submission2.adapter.SectionsPagerAdapter
 import com.lumi.submission2.db.MappingHelper
 import com.lumi.submission2.db.UserEntity
-import com.lumi.submission2.model.User
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_detail.progressBar
 
@@ -31,25 +28,18 @@ class Detail : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val user = intent.getParcelableExtra<Parcelable>(EXTRA_USER) as User
-        val imgPhoto: ImageView = findViewById(R.id.img_avatar)
-
-        fab_add.setOnClickListener(this)
-
-        txt_username.text = user.username
-        Glide.with(this)
-            .load(user.avatar)
-            .into(imgPhoto)
-
+        userEntity = intent.getParcelableExtra(EXTRA_USER)!!
 
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             DetailViewModel::class.java)
 
-        user.username?.let { detailViewModel.setDetail(it) }
+        userEntity.username?.let { detailViewModel.setDetail(it) }
         showLoading(true)
 
         detailViewModel.getDetails().observe(this, { userDetail ->
             if (userDetail != null) {
+                txt_username.text = userDetail.username
+                Glide.with(this) .load(userDetail.avatar) .into(img_avatar)
                 txt_name.text = userDetail.name
                 txt_company.text = userDetail.company
                 txt_location.text = userDetail.location
@@ -59,7 +49,7 @@ class Detail : AppCompatActivity(), View.OnClickListener {
             }
         })
 
-        userEntity.id.let { detailViewModel.setFavoriteById(it) }
+        userEntity.id?.let { detailViewModel.setFavoriteById(it) }
 
         detailViewModel.getFavoriteById().observe(this, {
             if (it.count >= 1) {
@@ -68,9 +58,11 @@ class Detail : AppCompatActivity(), View.OnClickListener {
             setStatusFavorite(statusFavorite)
         })
 
+        fab_add.setOnClickListener(this)
+
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        sectionsPagerAdapter.username = user.username
+        sectionsPagerAdapter.username = userEntity.username
         view_pager.adapter = sectionsPagerAdapter
         tabs.setupWithViewPager(view_pager)
 
@@ -105,7 +97,7 @@ class Detail : AppCompatActivity(), View.OnClickListener {
             Toast.makeText(this, R.string.add_user, Toast.LENGTH_SHORT).show()
         } else {
             detailViewModel.deleteFavoriteUser(
-                userEntity.id
+                userEntity.id!!
             )
             Toast.makeText(this, R.string.del_user, Toast.LENGTH_SHORT).show()
         }

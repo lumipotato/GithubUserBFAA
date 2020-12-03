@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.lumi.submission2.BuildConfig
-import com.lumi.submission2.model.User
+import com.lumi.submission2.db.UserEntity
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 
 class MainViewModel:ViewModel() {
-    private val listUsers = MutableLiveData<ArrayList<User>>()
+    private val listUsers = MutableLiveData<ArrayList<UserEntity>>()
 
     fun setUser(username:String) {
-        val listUser = ArrayList<User>()
+        val listUser = ArrayList<UserEntity>()
 
         val apiKey:String = BuildConfig.API_KEY
         val url = "https://api.github.com/search/users?q=$username"
@@ -35,7 +35,7 @@ class MainViewModel:ViewModel() {
 
                     for (i in 0 until items.length()){
                         val item = items.getJSONObject(i)
-                        val user = User()
+                        val user = UserEntity()
                         user.username = item.getString("login")
                         user.avatar = item.getString("avatar_url")
                         listUser.add(user)
@@ -53,7 +53,7 @@ class MainViewModel:ViewModel() {
         })
     }
 
-    fun getUsers(): LiveData<ArrayList<User>> {
+    fun getUsers(): LiveData<ArrayList<UserEntity>> {
         return listUsers
     }
 }

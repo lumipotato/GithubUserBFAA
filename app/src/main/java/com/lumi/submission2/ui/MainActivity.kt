@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lumi.submission2.adapter.ListUserAdapter
 import com.lumi.submission2.viewmodel.MainViewModel
 import com.lumi.submission2.R
-import com.lumi.submission2.model.User
+import com.lumi.submission2.db.UserEntity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         rv_users.adapter = adapter
 
         adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: User) {
+            override fun onItemClicked(data: UserEntity) {
                 val moveIntent = Intent(this@MainActivity, Detail::class.java)
                 moveIntent.putExtra(Detail.EXTRA_USER, data)
                 startActivity(moveIntent)

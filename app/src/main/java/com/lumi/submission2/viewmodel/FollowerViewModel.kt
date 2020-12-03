@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.lumi.submission2.BuildConfig
-import com.lumi.submission2.model.User
+import com.lumi.submission2.db.UserEntity
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 
 class FollowerViewModel:ViewModel() {
-    private val listUsers = MutableLiveData<ArrayList<User>>()
+    private val listUsers = MutableLiveData<ArrayList<UserEntity>>()
 
     fun setFollower(username: String) {
-        val listUser = ArrayList<User>()
+        val listUser = ArrayList<UserEntity>()
 
         val apiKey:String = BuildConfig.API_KEY
         val url = "https://api.github.com/users/$username/followers"
@@ -33,7 +33,7 @@ class FollowerViewModel:ViewModel() {
                     val jsonArray = JSONArray(result)
 
                     for (i in 0 until jsonArray.length()){
-                        val user = User()
+                        val user = UserEntity()
                         val jsonObject = jsonArray.getJSONObject(i)
                         user.username = jsonObject.getString("login")
                         user.avatar = jsonObject.getString("avatar_url")
@@ -51,7 +51,7 @@ class FollowerViewModel:ViewModel() {
             }
         })
     }
-    fun getFollowers(): LiveData<ArrayList<User>> {
+    fun getFollowers(): LiveData<ArrayList<UserEntity>> {
         return listUsers
     }
 }
