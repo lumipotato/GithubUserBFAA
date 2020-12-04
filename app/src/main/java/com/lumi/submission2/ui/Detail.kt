@@ -52,8 +52,7 @@ class Detail : AppCompatActivity(), View.OnClickListener {
         userEntity.id?.let { detailViewModel.setFavoriteById(it, applicationContext) }
 
         detailViewModel.getFavoriteById().observe(this, {
-            MappingHelper.mapCursorToArrayLits(it)
-            if (it != null) {
+            if (it.count >= 1) {
                 statusFavorite = true
             }
             setStatusFavorite(statusFavorite)
