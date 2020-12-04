@@ -36,6 +36,7 @@ class MainViewModel:ViewModel() {
                     for (i in 0 until items.length()){
                         val item = items.getJSONObject(i)
                         val user = UserEntity()
+                        user.id = item.getInt("id")
                         user.username = item.getString("login")
                         user.avatar = item.getString("avatar_url")
                         listUser.add(user)

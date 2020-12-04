@@ -1,7 +1,7 @@
 package com.lumi.submission2.viewmodel
 
-import android.content.ContentResolver
 import android.content.ContentValues
+import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.util.Log
@@ -11,15 +11,15 @@ import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.lumi.submission2.BuildConfig
+import com.lumi.submission2.db.UserEntity
 import com.lumi.submission2.db.UserProvider.Companion.CONTENT_URI
-import com.lumi.submission2.model.UserDetail
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 
 class DetailViewModel:ViewModel() {
-    private lateinit var contentResolver: ContentResolver
     private lateinit var uriWithId: Uri
-    private val detailUsers = MutableLiveData<UserDetail>()
+    private var userEntity: UserEntity? = null
+    private val detailUsers = MutableLiveData<UserEntity>()
     private val favoriteUser = MutableLiveData<Cursor>()
 
     fun setDetail(username: String) {
@@ -39,7 +39,8 @@ class DetailViewModel:ViewModel() {
                 try {
                     val responseObject = JSONObject(result)
 
-                    val user = UserDetail()
+                    val user = UserEntity()
+                    user.id = responseObject.getInt("id")
                     user.username = responseObject.getString("login")
                     user.avatar = responseObject.getString("avatar_url")
                     user.name = responseObject.getString("name")
@@ -60,23 +61,29 @@ class DetailViewModel:ViewModel() {
         })
     }
 
-
-    fun setFavoriteUser(users_favorite: ContentValues) {
-        contentResolver.insert(CONTENT_URI, users_favorite)
+    fun setFavoriteUser(users_favorite: ContentValues, context: Context) {
+        context.contentResolver.insert(CONTENT_URI, users_favorite)
+        Log.d("setFavoriteUser", "display : $CONTENT_URI")
     }
 
-    fun deleteFavoriteUser(id: Int) {
-        contentResolver.delete(uriWithId, id.toString(), null)
+    fun deleteFavoriteUser(id: Int, context: Context) {
+        uriWithId = Uri.parse("$CONTENT_URI/$id")
+        context.contentResolver.delete(uriWithId, null, null)
+        Log.d("deleteFavoriteUser", "display : $uriWithId")
     }
 
-    fun setFavoriteById(id: Int) {
-        val cursorFavorite = contentResolver.query(CONTENT_URI,null, id.toString(),null,null)
+    fun setFavoriteById(id: Int, context: Context) {
+        uriWithId = Uri.parse("$CONTENT_URI/$id")
+        val cursorFavorite = context.contentResolver.query(uriWithId,null, null,null,null)
         favoriteUser.postValue(cursorFavorite)
+        Log.d("setFavoriteById", "display : $uriWithId")
     }
 
-    fun getFavoriteById(): LiveData<Cursor> = favoriteUser
+    fun getFavoriteById(): LiveData<Cursor> {
+        return favoriteUser
+    }
 
-    fun getDetails(): LiveData<UserDetail> {
+    fun getDetails(): LiveData<UserEntity> {
         return detailUsers
     }
 

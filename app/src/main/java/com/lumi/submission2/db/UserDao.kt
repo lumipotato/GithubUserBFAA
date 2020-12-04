@@ -9,14 +9,14 @@ import androidx.room.Query
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(users_favorite: UserEntity): Long
+    fun insertUser(users_favorite: UserEntity?): Long
 
     @Query("SELECT * FROM users_favorite ORDER BY name ASC")
     fun getUsers(): Cursor
 
     @Query("SELECT * FROM users_favorite WHERE id = :id")
-    fun getUserById(id: Int): Cursor
+    fun getUserById(id: Int?): Cursor
 
     @Query("DELETE FROM users_favorite WHERE id = :id")
-    fun deleteUser(id: Int): Int
+    fun deleteUser(id: Int?): Int
 }

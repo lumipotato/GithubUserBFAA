@@ -10,9 +10,9 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "users_favorite")
 @Parcelize
 data class UserEntity (
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey
     @ColumnInfo(name = "id")
-    val id: Int? = null,
+    var id: Int? = null,
 
     @ColumnInfo(name = "avatar_url")
     var avatar: String? = null,
@@ -21,17 +21,17 @@ data class UserEntity (
     var username: String? = null,
 
     @ColumnInfo(name = "name")
-    val name: String? = null,
+    var name: String? = null,
 
     @ColumnInfo(name = "company")
-    val company: String? = null,
+    var company: String? = null,
 
     @ColumnInfo(name = "location")
-    val location: String? = null,
+    var location: String? = null,
 
     @ColumnInfo(name = "followers")
-    val follower: Int? = null,
+    var follower: Int? = null,
 
     @ColumnInfo(name = "following")
-    val following: Int? = null
+    var following: Int? = null
         ):Parcelable

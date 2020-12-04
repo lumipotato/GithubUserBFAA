@@ -49,10 +49,11 @@ class Detail : AppCompatActivity(), View.OnClickListener {
             }
         })
 
-        userEntity.id?.let { detailViewModel.setFavoriteById(it) }
+        userEntity.id?.let { detailViewModel.setFavoriteById(it, applicationContext) }
 
         detailViewModel.getFavoriteById().observe(this, {
-            if (it.count >= 1) {
+            MappingHelper.mapCursorToArrayLits(it)
+            if (it != null) {
                 statusFavorite = true
             }
             setStatusFavorite(statusFavorite)
@@ -73,8 +74,8 @@ class Detail : AppCompatActivity(), View.OnClickListener {
         when (v.id) {
             R.id.fab_add -> {
                 statusFavorite = !statusFavorite
-                setStatusFavorite(statusFavorite)
                 setFavorite(statusFavorite)
+                setStatusFavorite(statusFavorite)
 
             }
         }
@@ -91,15 +92,13 @@ class Detail : AppCompatActivity(), View.OnClickListener {
         if (status) {
             val content = MappingHelper.convertToContentValues(userEntity)
             detailViewModel.setFavoriteUser(
-                content
+                content,applicationContext
             )
 
             Toast.makeText(this, R.string.add_user, Toast.LENGTH_SHORT).show()
         } else {
-            detailViewModel.deleteFavoriteUser(
-                userEntity.id!!
-            )
-            Toast.makeText(this, R.string.del_user, Toast.LENGTH_SHORT).show()
+            userEntity.id?.let { detailViewModel.deleteFavoriteUser(it, applicationContext) }
+                Toast.makeText(this, R.string.del_user, Toast.LENGTH_SHORT).show()
         }
     }
 
