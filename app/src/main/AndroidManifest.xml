@@ -20,7 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <provider
             android:name=".db.UserProvider"
             android:authorities="com.lumi.submission2"
@@ -29,10 +28,12 @@
             android:readPermission="com.lumi.submission2.READ_DATABASE"
             android:writePermission="com.lumi.submission2.WRITE_DATABASE" />
 
-        <activity android:name=".ui.FavoriteActivity" />
-        <activity android:name=".ui.Detail"
-                  android:parentActivityName=".ui.MainActivity"/>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.main.SettingHolder" />
+        <activity android:name=".ui.main.FavoriteActivity" />
+        <activity
+            android:name=".ui.main.Detail"
+            android:parentActivityName=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

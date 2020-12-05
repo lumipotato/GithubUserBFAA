@@ -24,5 +24,10 @@
     <string name="favorite">My Favorite</string>
     <string name="detail">Detail</string>
     <string name="home">Home</string>
+    <string name="reminder">Reminder</string>
+    <string name="reminder_off">Notification Off</string>
+    <string name="reminder_on">Notification On</string>
+    <string name="language">Language</string>
+    <string name="selected_language">English</string>
 
 </resources>

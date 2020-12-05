@@ -1,4 +1,4 @@
-package com.lumi.submission2.ui
+package com.lumi.submission2.ui.main
 
 import android.content.Intent
 import android.database.ContentObserver
