@@ -30,7 +30,8 @@
             android:writePermission="com.lumi.submission2.WRITE_DATABASE" />
 
         <activity android:name=".ui.FavoriteActivity" />
-        <activity android:name=".ui.Detail" />
+        <activity android:name=".ui.Detail"
+                  android:parentActivityName=".ui.MainActivity"/>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

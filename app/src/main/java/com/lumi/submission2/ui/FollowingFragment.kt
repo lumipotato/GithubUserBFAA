@@ -1,5 +1,6 @@
 package com.lumi.submission2.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lumi.submission2.viewmodel.FollowingViewModel
 import com.lumi.submission2.adapter.ListUserAdapter
 import com.lumi.submission2.R
+import com.lumi.submission2.db.UserEntity
 import kotlinx.android.synthetic.main.activity_main.rv_users
 
 class FollowingFragment : Fragment() {
@@ -51,6 +53,15 @@ class FollowingFragment : Fragment() {
         adapter.notifyDataSetChanged()
         rv_users.layoutManager = LinearLayoutManager(activity)
         rv_users.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: UserEntity) {
+                val moveIntent = Intent(activity, Detail::class.java)
+                moveIntent.putExtra(Detail.EXTRA_USER, data)
+                startActivity(moveIntent)
+            }
+        })
+
         followingViewModel = ViewModelProvider(activity!!, ViewModelProvider.NewInstanceFactory()).get(
             FollowingViewModel::class.java)
         username?.let { followingViewModel.setFollowing(it) }

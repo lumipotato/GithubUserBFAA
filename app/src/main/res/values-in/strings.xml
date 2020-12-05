@@ -22,5 +22,7 @@
     <string name="del_user">hapus favorite</string>
     <string name="menu_1">menu fav</string>
     <string name="fav_empty">List kosong, silahkan like seseorang</string>
-    <string name="favorite">Favorite</string>
+    <string name="favorite">Favorite Ku</string>
+    <string name="detail">Detail</string>
+    <string name="home">Home</string>
 </resources>

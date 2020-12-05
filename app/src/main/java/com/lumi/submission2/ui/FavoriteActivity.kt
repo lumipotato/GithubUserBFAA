@@ -67,6 +67,7 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         supportActionBar?.title = getString(R.string.favorite)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun loadListData() {

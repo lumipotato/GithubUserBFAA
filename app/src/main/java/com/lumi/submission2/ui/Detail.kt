@@ -1,6 +1,9 @@
 package com.lumi.submission2.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -45,6 +48,7 @@ class Detail : AppCompatActivity(), View.OnClickListener {
                 txt_location.text = userDetail.location
                 txt_follower.text = userDetail.follower.toString()
                 txt_following.text = userDetail.following.toString()
+                supportActionBar?.title = (getString(R.string.detail) +" "+ userDetail.username)
                 showLoading(false)
             }
         })
@@ -66,6 +70,8 @@ class Detail : AppCompatActivity(), View.OnClickListener {
         tabs.setupWithViewPager(view_pager)
 
         supportActionBar?.elevation = 0f
+        supportActionBar?.title = getString(R.string.detail)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onClick(v: View) {
@@ -106,5 +112,28 @@ class Detail : AppCompatActivity(), View.OnClickListener {
         } else {
             progressBar.visibility = View.INVISIBLE
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_home -> {
+                val homeIntent = Intent(this@Detail, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK }
+                startActivity(homeIntent)
+                true
+            }
+
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> true
+        }
+
     }
 }
