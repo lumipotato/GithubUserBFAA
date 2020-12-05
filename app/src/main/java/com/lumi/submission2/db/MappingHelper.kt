@@ -47,7 +47,7 @@ class MappingHelper {
             return values
         }
 
-        fun mapCursorToArrayLits(favoritesCursor: Cursor?): ArrayList<UserEntity> {
+        fun mapCursorToArrayList(favoritesCursor: Cursor?): ArrayList<UserEntity> {
             val favoriteList = ArrayList<UserEntity>()
 
             favoritesCursor?.apply {

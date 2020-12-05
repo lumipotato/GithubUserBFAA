@@ -15,7 +15,7 @@ class FavoriteViewModel:ViewModel() {
 
     fun setFavoriteListUser(context: Context) {
         val cursor = context.contentResolver.query(CONTENT_URI,null, null,null,null)
-        val favoriteListData = MappingHelper.mapCursorToArrayLits(cursor)
+        val favoriteListData = MappingHelper.mapCursorToArrayList(cursor)
         favoriteListUser.postValue(favoriteListData)
         Log.d("setFavoriteListUser", "display : $CONTENT_URI")
     }
