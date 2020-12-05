@@ -58,7 +58,7 @@ class FollowerFragment : Fragment() {
         activity?.let {
             followerViewModel.getFollowers().observe(it, { user ->
                 if (user != null) {
-                    adapter.setData(user)
+                    adapter.mData = user
                 }
             })
         }

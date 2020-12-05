@@ -17,12 +17,12 @@ class ListUserAdapter : RecyclerView.Adapter<ListUserAdapter.ListViewHolder>(){
         this.onItemClickCallback = onItemClickCallback
     }
 
-    private val mData = ArrayList<UserEntity>()
-    fun setData(items: ArrayList<UserEntity>) {
-        mData.clear()
-        mData.addAll(items)
-        notifyDataSetChanged()
-    }
+    var mData = ArrayList<UserEntity>()
+        set(listUsers) {
+            this.mData.clear()
+            this.mData.addAll(listUsers)
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val mView = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_row_user, viewGroup, false)

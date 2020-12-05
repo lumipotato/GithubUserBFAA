@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.getUsers().observe(this, { user ->
             if (user != null) {
-                adapter.setData(user)
+                adapter.mData = user
                 showLoading(false)
                 text_greeting.visibility = View.INVISIBLE
             }

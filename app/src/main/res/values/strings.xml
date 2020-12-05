@@ -21,5 +21,6 @@
     <string name="del_user">remove user</string>
     <string name="menu_1">menu fav</string>
     <string name="fav_empty">Empty List, please like at least 1 user</string>
+    <string name="favorite">Favorite</string>
 
 </resources>
