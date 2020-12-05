@@ -60,7 +60,6 @@ class Detail : AppCompatActivity(), View.OnClickListener {
 
         fab_add.setOnClickListener(this)
 
-
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         sectionsPagerAdapter.username = userEntity.username
         view_pager.adapter = sectionsPagerAdapter
@@ -93,8 +92,8 @@ class Detail : AppCompatActivity(), View.OnClickListener {
             detailViewModel.setFavoriteUser(
                 content,applicationContext
             )
-
             Toast.makeText(this, R.string.add_user, Toast.LENGTH_SHORT).show()
+
         } else {
             userEntity.id?.let { detailViewModel.deleteFavoriteUser(it, applicationContext) }
                 Toast.makeText(this, R.string.del_user, Toast.LENGTH_SHORT).show()

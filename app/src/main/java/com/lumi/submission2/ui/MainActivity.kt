@@ -96,11 +96,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu2) {
-            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
-            startActivity(mIntent)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+        return when (item.itemId) {
+            R.id.menu1 -> {
+                val favIntent = Intent(this@MainActivity, FavoriteActivity::class.java)
+                startActivity(favIntent)
+                true
+            }
 
+            R.id.menu2 -> {
+                val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(mIntent)
+                true
+            }
+            else -> true
+        }
+
+    }
 }

@@ -19,4 +19,7 @@
     <string name="greeting">Welcome To Github User, Please do some search</string>
     <string name="add_user">add user</string>
     <string name="del_user">remove user</string>
+    <string name="menu_1">menu fav</string>
+    <string name="fav_empty">Empty List, please like at least 1 user</string>
+
 </resources>

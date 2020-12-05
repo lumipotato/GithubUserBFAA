@@ -18,7 +18,6 @@ import org.json.JSONObject
 
 class DetailViewModel:ViewModel() {
     private lateinit var uriWithId: Uri
-    private var userEntity: UserEntity? = null
     private val detailUsers = MutableLiveData<UserEntity>()
     private val favoriteUser = MutableLiveData<Cursor>()
 
@@ -74,8 +73,8 @@ class DetailViewModel:ViewModel() {
 
     fun setFavoriteById(id: Int, context: Context) {
         uriWithId = Uri.parse("$CONTENT_URI/$id")
-        val cursorFavorite = context.contentResolver.query(uriWithId,null, null,null,null)
-        favoriteUser.postValue(cursorFavorite)
+        val cursor = context.contentResolver.query(uriWithId,null, null,null,null)
+        favoriteUser.postValue(cursor)
         Log.d("setFavoriteById", "display : $uriWithId")
     }
 

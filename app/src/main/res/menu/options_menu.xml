@@ -5,8 +5,12 @@
         android:id="@+id/search"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="collapseActionView|always" />
+        app:showAsAction="collapseActionView|ifRoom" />
     <group android:menuCategory="container">
+        <item android:id="@+id/menu1"
+            android:title="@string/menu_1"
+            android:icon = "@drawable/ic_baseline_stars_36"
+            app:showAsAction="always" />
         <item
             android:id="@+id/menu2"
             android:title="@string/menu_2" />
