@@ -14,7 +14,7 @@ class SettingFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var languagePreference: Preference
-    private lateinit var reminderPreference: SwitchPreference
+    private lateinit var switchPreference: SwitchPreference
     private lateinit var alarmReceiver: AlarmReceiver
 
     override fun onCreatePreferences(bundle: Bundle?, s: String?) {
@@ -24,7 +24,7 @@ class SettingFragment : PreferenceFragmentCompat(),
     }
 
     private fun init() {
-        reminderPreference = findPreference<SwitchPreference>("reminder") as SwitchPreference
+        switchPreference = findPreference<SwitchPreference>("reminder") as SwitchPreference
         languagePreference = findPreference<Preference>("language") as Preference
 
         alarmReceiver = AlarmReceiver()
