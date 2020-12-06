@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Consumer App</string>
-    <string name="favorite">Favorite</string>
+    <string name="favorite">Favorite Consumer App</string>
     <string name="detail">Detail</string>
     <string name="add_user">Add User</string>
     <string name="del_user">Remove User</string>

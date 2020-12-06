@@ -30,5 +30,6 @@
     <string name="language">Language</string>
     <string name="selected_language">English</string>
     <string name="notif">Let\'s find user on Github User!</string>
+    <string name="image_splash">splash</string>
 
 </resources>
