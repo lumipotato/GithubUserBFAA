@@ -1,9 +1,8 @@
-package com.lumi.submission2.ui.main
+package com.lumi.submission2.ui.setting
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.lumi.submission2.R
-import com.lumi.submission2.ui.fragment.SettingFragment
 
 class SettingHolder : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.lumi.submission2.ui.fragment
+package com.lumi.submission2.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,18 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lumi.submission2.viewmodel.FollowerViewModel
+import com.lumi.submission2.viewmodel.FollowingViewModel
 import com.lumi.submission2.adapter.ListUserAdapter
 import com.lumi.submission2.R
 import com.lumi.submission2.db.UserEntity
-import com.lumi.submission2.ui.main.Detail
 import kotlinx.android.synthetic.main.activity_main.rv_users
 
-class FollowerFragment : Fragment() {
+class FollowingFragment : Fragment() {
 
     private var username: String? = null
     private lateinit var adapter: ListUserAdapter
-    private lateinit var followerViewModel: FollowerViewModel
+    private lateinit var followingViewModel: FollowingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +36,13 @@ class FollowerFragment : Fragment() {
 
     companion object {
         private const val ARG_USERNAME = "username"
-        fun newInstance(username: String?) : FollowerFragment {
-            val fragment = FollowerFragment()
+        fun newInstance(username: String?) : FollowingFragment {
+            val fragment = FollowingFragment()
             val bundle = Bundle()
             bundle.putString(ARG_USERNAME, username)
             fragment.arguments = bundle
             return fragment
-            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,11 +62,11 @@ class FollowerFragment : Fragment() {
             }
         })
 
-        followerViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory()).get(
-            FollowerViewModel::class.java)
-        username?.let { followerViewModel.setFollower(it) }
+        followingViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory()).get(
+            FollowingViewModel::class.java)
+        username?.let { followingViewModel.setFollowing(it) }
         activity?.let {
-            followerViewModel.getFollowers().observe(it, { user ->
+            followingViewModel.getFollowings().observe(it, { user ->
                 if (user != null) {
                     adapter.mData = user
                 }
