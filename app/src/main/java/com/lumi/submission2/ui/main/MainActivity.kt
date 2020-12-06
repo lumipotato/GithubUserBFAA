@@ -3,19 +3,19 @@ package com.lumi.submission2.ui.main
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lumi.submission2.adapter.ListUserAdapter
-import com.lumi.submission2.viewmodel.MainViewModel
 import com.lumi.submission2.R
+import com.lumi.submission2.adapter.ListUserAdapter
 import com.lumi.submission2.db.UserEntity
 import com.lumi.submission2.ui.setting.SettingHolder
+import com.lumi.submission2.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                 mainViewModel.setUser(query)
                 showLoading(true)
                 text_greeting.visibility = View.INVISIBLE
+                text_not_found.visibility = View.INVISIBLE
                 return true
             }
 

@@ -9,13 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.lumi.submission2.viewmodel.DetailViewModel
 import com.lumi.submission2.R
 import com.lumi.submission2.adapter.SectionsPagerAdapter
 import com.lumi.submission2.db.MappingHelper
 import com.lumi.submission2.db.UserEntity
+import com.lumi.submission2.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.activity_detail.progressBar
 
 class Detail : AppCompatActivity(), View.OnClickListener {
 
@@ -95,9 +94,7 @@ class Detail : AppCompatActivity(), View.OnClickListener {
     private fun setFavorite(status: Boolean) {
         if (status) {
             val content = MappingHelper.convertToContentValues(userEntity)
-            detailViewModel.setFavoriteUser(
-                content,applicationContext
-            )
+            detailViewModel.setFavoriteUser(content,applicationContext)
             Toast.makeText(this, R.string.add_user, Toast.LENGTH_SHORT).show()
 
         } else {
