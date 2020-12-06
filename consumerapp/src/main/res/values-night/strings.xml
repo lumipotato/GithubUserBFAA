@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favorite">Favorite</string>
+    <string name="detail">Detail</string>
+    <string name="add_user">Add User</string>
+    <string name="del_user">Remove User</string>
+</resources>

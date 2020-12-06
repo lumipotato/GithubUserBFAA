@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Consumer App</string>
+    <string name="favorite">Favorite</string>
+    <string name="detail">Detail</string>
+    <string name="add_user">Add User</string>
+    <string name="del_user">Remove User</string>
+    <string name="Uname">Username</string>
+    <string name="Name">Name</string>
+    <string name="profile">Profile</string>
+    <string name="company">Company</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="location">Location</string>
+    <string name="todo">TODO</string>
+    <string name="insert_user">insert</string>
+    <string name="user">user</string>
+    <string name="tab_text_1">Follower</string>
+    <string name="tab_text_2">Following</string>
+    <string name="fav_empty">Empty List, please like at least 1 user</string>
+    <string name="home">Home</string>
+</resources>

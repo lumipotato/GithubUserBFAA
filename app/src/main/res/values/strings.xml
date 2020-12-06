@@ -29,5 +29,6 @@
     <string name="reminder_on">Notification On</string>
     <string name="language">Language</string>
     <string name="selected_language">English</string>
+    <string name="notif">Let\'s find user on Github User!</string>
 
 </resources>

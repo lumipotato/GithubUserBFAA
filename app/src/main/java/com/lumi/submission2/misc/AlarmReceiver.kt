@@ -53,6 +53,7 @@ class AlarmReceiver : BroadcastReceiver() {
             .setColor(ContextCompat.getColor(context, android.R.color.transparent))
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
             .setSound(alarmSound)
+            .setAutoCancel(true)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(CHANNEL_ID,
@@ -74,7 +75,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
-        intent.putExtra(EXTRA_MESSAGE, context.getString(R.string.reminder))
+        intent.putExtra(EXTRA_MESSAGE, context.getString(R.string.notif))
 
         Log.e("display time", time)
         val timeArray = time.split(":").toTypedArray()
