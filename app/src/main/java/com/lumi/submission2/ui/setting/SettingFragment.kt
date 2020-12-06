@@ -13,8 +13,8 @@ import com.lumi.submission2.misc.AlarmReceiver
 class SettingFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private lateinit var switchPreference: SwitchPreference
     private lateinit var languagePreference: Preference
+    private lateinit var reminderPreference: SwitchPreference
     private lateinit var alarmReceiver: AlarmReceiver
 
     override fun onCreatePreferences(bundle: Bundle?, s: String?) {
@@ -24,8 +24,8 @@ class SettingFragment : PreferenceFragmentCompat(),
     }
 
     private fun init() {
+        reminderPreference = findPreference<SwitchPreference>("reminder") as SwitchPreference
         languagePreference = findPreference<Preference>("language") as Preference
-        switchPreference = findPreference<SwitchPreference>("reminder") as SwitchPreference
 
         alarmReceiver = AlarmReceiver()
     }
@@ -47,13 +47,15 @@ class SettingFragment : PreferenceFragmentCompat(),
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
-        if (key == "alarm") {
-            val statusReminder = sharedPreferences.getBoolean("alarm", false)
+        if (key == "reminder") {
+            val status = sharedPreferences.getBoolean("reminder", false)
 
-            if (statusReminder) {
+            if (status) {
                 alarmReceiver.setAlarmOn(context, "09:00")
+
             } else {
                 alarmReceiver.setAlarmOff(context)
+
             }
         }
     }

@@ -9,6 +9,8 @@ class SettingHolder : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting_holder)
 
+        supportActionBar?.title = getString(R.string.menu_2)
+
         supportFragmentManager.beginTransaction().add(R.id.setting_holder, SettingFragment()).commit()
     }
 }

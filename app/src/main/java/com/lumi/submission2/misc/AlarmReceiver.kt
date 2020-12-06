@@ -37,11 +37,12 @@ class AlarmReceiver : BroadcastReceiver() {
 
     private fun showAlarmNotification(context: Context, title: String, message: String?) {
 
+        val CHANNEL_ID = "Channel_1"
+        val CHANNEL_NAME = "Alarm channel"
+
         val intent = Intent(context, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 
-        val CHANNEL_ID = "Channel_1"
-        val CHANNEL_NAME = "AlarmManager channel"
         val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
@@ -90,7 +91,6 @@ class AlarmReceiver : BroadcastReceiver() {
             AlarmManager.INTERVAL_DAY,
             pendingIntent
         )
-
         Toast.makeText(context, R.string.reminder_on, Toast.LENGTH_SHORT).show()
     }
 
@@ -101,7 +101,6 @@ class AlarmReceiver : BroadcastReceiver() {
         pendingIntent.cancel()
 
         alarmManager.cancel(pendingIntent)
-
         Toast.makeText(context, R.string.reminder_off, Toast.LENGTH_SHORT).show()
     }
 

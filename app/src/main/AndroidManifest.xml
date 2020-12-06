@@ -3,6 +3,8 @@
     package="com.lumi.submission2">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <permission
         android:name="com.lumi.submission2.READ_DATABASE"
