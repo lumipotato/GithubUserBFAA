@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+def SERVERNAMEDB_API_KEY = GithubUser_ApiKey ?: "Enter API-KEY in gradle.properties"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
@@ -14,7 +16,12 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField("String", "API_KEY", '"17cb852da4c0e80bcf2a9f424281b8354f5468b9"')
+        each { type ->
+            type.buildConfigField 'String', "ApiKey", SERVERNAMEDB_API_KEY
+
+            type.resValue 'string', "api_key", SERVERNAMEDB_API_KEY
+        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }

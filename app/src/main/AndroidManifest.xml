@@ -38,10 +38,10 @@
         <activity android:name=".ui.setting.SettingHolder" />
         <activity android:name=".ui.main.FavoriteActivity" />
         <activity
-            android:name=".ui.main.Detail"
+            android:name=".ui.main.DetailActivity"
             android:parentActivityName=".ui.main.MainActivity" />
         <activity android:name=".ui.main.MainActivity"/>
-            <activity android:name=".ui.main.Splash" >
+            <activity android:name=".ui.main.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

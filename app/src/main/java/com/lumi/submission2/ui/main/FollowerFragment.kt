@@ -56,8 +56,8 @@ class FollowerFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : ListUserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: UserEntity) {
-                val moveIntent = Intent(activity, Detail::class.java)
-                moveIntent.putExtra(Detail.EXTRA_USER, data)
+                val moveIntent = Intent(activity, DetailActivity::class.java)
+                moveIntent.putExtra(DetailActivity.EXTRA_USER, data)
                 startActivity(moveIntent)
             }
         })
