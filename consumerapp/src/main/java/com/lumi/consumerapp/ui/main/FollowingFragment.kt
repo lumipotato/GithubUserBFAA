@@ -2,17 +2,17 @@ package com.lumi.consumerapp.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lumi.consumerapp.viewmodel.FollowingViewModel
-import com.lumi.consumerapp.adapter.ListUserAdapter
 import com.lumi.consumerapp.R
+import com.lumi.consumerapp.adapter.ListUserAdapter
 import com.lumi.consumerapp.db.UserEntity
-import kotlinx.android.synthetic.main.fragment_following.*
+import com.lumi.consumerapp.viewmodel.FollowingViewModel
+import kotlinx.android.synthetic.main.fragment_follower.*
 
 class FollowingFragment : Fragment() {
 

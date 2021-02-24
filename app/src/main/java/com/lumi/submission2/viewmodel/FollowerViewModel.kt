@@ -17,7 +17,7 @@ class FollowerViewModel:ViewModel() {
     fun setFollower(username: String) {
         val listUser = ArrayList<UserEntity>()
 
-        val apiKey:String = BuildConfig.API_KEY
+        val apiKey:String = BuildConfig.ApiKey
         val url = "https://api.github.com/users/$username/followers"
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")

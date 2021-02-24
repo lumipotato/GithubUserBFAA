@@ -17,7 +17,7 @@ class MainViewModel:ViewModel() {
     fun setUser(username:String) {
         val listUser = ArrayList<UserEntity>()
 
-        val apiKey:String = BuildConfig.API_KEY
+        val apiKey:String = BuildConfig.ApiKey
         val url = "https://api.github.com/search/users?q=$username"
         val client = AsyncHttpClient()
         client.addHeader("Authorization", "token $apiKey")
